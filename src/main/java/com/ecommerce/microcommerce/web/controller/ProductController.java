@@ -49,7 +49,7 @@ public class ProductController {
     }
 
     //ajouter un produit
-   /* @PostMapping(value = "/Produits")
+    @PostMapping(value = "/Produits")
     public ResponseEntity<Void> ajouterProduit(@RequestBody Product product) {
 
         Product productAdded =  productDao.save(product);
@@ -64,11 +64,22 @@ public class ProductController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
-    }*/
+    }
 
     @GetMapping(value = "test/produits/{prixLimit}")
     public List<Product> testeDeRequetes(@PathVariable int prixLimit) {
         return productDao.findByPrixGreaterThan(400);
     }
 
+    @DeleteMapping (value = "/Produits/{id}")
+    public void supprimerProduit(@PathVariable int id) {
+
+        productDao.deleteById(id);
+    }
+
+    @PutMapping (value = "/Produits")
+    public void updateProduit(@RequestBody Product product) {
+
+        productDao.save(product);
+    }
 }

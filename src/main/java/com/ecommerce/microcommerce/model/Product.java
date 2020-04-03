@@ -10,8 +10,9 @@ import javax.persistence.Id;
 public class Product {
 
     @Id
-    @GeneratedValue
+
     private int id;
+
     private String nom;
     private int prix;
 
