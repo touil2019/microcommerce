@@ -40,7 +40,7 @@ public class ProductController {
     /*@GetMapping(value="Produits")
     public List<Product>listeProduits(){
         return productDao.findAll();
-    }
+    }*/
 
     //Récupérer un produit par son Id
     @GetMapping(value="Produits/{id}")
@@ -49,7 +49,7 @@ public class ProductController {
     }
 
     //ajouter un produit
-    @PostMapping(value = "/Produits")
+   /* @PostMapping(value = "/Produits")
     public ResponseEntity<Void> ajouterProduit(@RequestBody Product product) {
 
         Product productAdded =  productDao.save(product);
@@ -66,5 +66,9 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }*/
 
+    @GetMapping(value = "test/produits/{prixLimit}")
+    public List<Product> testeDeRequetes(@PathVariable int prixLimit) {
+        return productDao.findByPrixGreaterThan(400);
+    }
 
 }
